@@ -9,7 +9,7 @@ import {
   RemoveLiquidityOne,
   StopRampA,
   TokenSwap,
-} from "../../generated/ALETHPool/SwapFlashLoanNoWithdrawFee"
+} from "../../generated/vUSD1Pool/SwapFlashLoanNoWithdrawFee"
 import {
   AddLiquidityEvent,
   FlashLoanEvent,
