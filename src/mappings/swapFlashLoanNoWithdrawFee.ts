@@ -134,6 +134,7 @@ export function handleAddLiquidity(event: AddLiquidity): void {
     event.transaction,
   )
   swap.balances = getBalancesNoWithdrawFee(event.address, swap.numTokens)
+  swap.lpTokenSupply = event.params.lpTokenSupply
   swap.save()
 
   let log = new AddLiquidityEvent(
@@ -161,6 +162,7 @@ export function handleRemoveLiquidity(event: RemoveLiquidity): void {
     event.transaction,
   )
   swap.balances = getBalancesNoWithdrawFee(event.address, swap.numTokens)
+  swap.lpTokenSupply = event.params.lpTokenSupply
   swap.save()
 
   let log = new RemoveLiquidityEvent(

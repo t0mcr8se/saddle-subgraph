@@ -32,3 +32,9 @@ export function getOrCreateToken(
 
   return token as Token
 }
+
+export function getTotalSupply(address: Address): BigInt {
+  let tokenContract = ERC20.bind(address)
+  let result = tokenContract.try_totalSupply()
+  return !result.reverted ? result.value : new BigInt(0)
+}

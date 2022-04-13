@@ -2,7 +2,7 @@ import { Address, BigInt, ethereum } from "@graphprotocol/graph-ts"
 
 import { Swap } from "../../generated/schema"
 import { SwapFlashLoanNoWithdrawFee } from "../../generated/vUSD1Pool/SwapFlashLoanNoWithdrawFee"
-import { getOrCreateToken } from "./token"
+import { getOrCreateToken, getTotalSupply } from "./token"
 import { getSystemInfo } from "./system"
 
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
@@ -17,6 +17,7 @@ class SwapInfo {
   virtualPrice: BigInt
   owner: Address
   lpToken: Address
+  lpTokenSupply: BigInt
 }
 
 
@@ -46,6 +47,7 @@ export function getOrCreateSwapNoWithdrawFee(
     swap.virtualPrice = info.virtualPrice
 
     swap.owner = info.owner
+    swap.lpTokenSupply = info.lpTokenSupply
 
     swap.save()
 
@@ -84,6 +86,8 @@ export function getSwapInfoNoWithdrawFee(swap: Address): SwapInfo {
     i++
   } while (!t.reverted && !b.reverted)
 
+  let lpTokenSupply = getTotalSupply(swap)
+
   return {
     tokens,
     balances,
@@ -94,6 +98,7 @@ export function getSwapInfoNoWithdrawFee(swap: Address): SwapInfo {
     virtualPrice: swapContract.getVirtualPrice(),
     owner: swapContract.owner(),
     lpToken: swapContract.swapStorage().value6,
+    lpTokenSupply
   }
 }
 
