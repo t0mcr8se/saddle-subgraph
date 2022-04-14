@@ -1,6 +1,6 @@
 import { Address, BigInt, ethereum } from "@graphprotocol/graph-ts"
 
-import { ERC20 } from "../../generated/USDPool/ERC20"
+import { ERC20 } from "../../generated/vUSD1Pool/ERC20"
 import { Token } from "../../generated/schema"
 import { getSystemInfo } from "./system"
 
@@ -31,4 +31,10 @@ export function getOrCreateToken(
   }
 
   return token as Token
+}
+
+export function getTotalSupply(address: Address): BigInt {
+  let tokenContract = ERC20.bind(address)
+  let result = tokenContract.try_totalSupply()
+  return !result.reverted ? result.value : new BigInt(0)
 }

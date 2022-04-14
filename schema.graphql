@@ -28,6 +28,9 @@ type Swap @entity {
   # liquidity provider token
   lpToken: Bytes!
 
+  # lp Token supply
+  lpTokenSupply: BigInt!
+
   # amplification coefficient
   A: BigInt!
 
