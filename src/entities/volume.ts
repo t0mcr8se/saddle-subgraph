@@ -27,6 +27,9 @@ export function getHourlyTradeVolume(
     volume.volume = decimal.ZERO
   }
 
+  volume.lpTokenSupply = swap.lpTokenSupply
+  volume.virtualPrice = swap.virtualPrice
+
   return volume!
 }
 
@@ -47,6 +50,9 @@ export function getDailyTradeVolume(
     volume.volume = decimal.ZERO
   }
 
+  volume.lpTokenSupply = swap.lpTokenSupply
+  volume.virtualPrice = swap.virtualPrice
+
   return volume!
 }
 
@@ -66,6 +72,9 @@ export function getWeeklyTradeVolume(
     volume.timestamp = week
     volume.volume = decimal.ZERO
   }
+
+  volume.lpTokenSupply = swap.lpTokenSupply
+  volume.virtualPrice = swap.virtualPrice
 
   return volume!
 }
