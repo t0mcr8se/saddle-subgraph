@@ -278,7 +278,6 @@ export function handleTokenSwap(event: TokenSwap): void {
     event.transaction,
   )
   swap.balances = getBalancesNoWithdrawFee(event.address, swap.numTokens)
-  swap.save()
 
   if (swap != null) {
     let exchange = new TokenExchange(
@@ -323,6 +322,7 @@ export function handleTokenSwap(event: TokenSwap): void {
         boughtToken.decimals.toI32(),
       )
       let volume = sellVolume.plus(buyVolume).div(decimal.TWO)
+      swap.cumulativeVolume = swap.cumulativeVolume.plus(volume)
 
       let hourlyVolume = getHourlyTradeVolume(swap, event.block.timestamp)
       hourlyVolume.volume = hourlyVolume.volume.plus(volume)
@@ -342,4 +342,5 @@ export function handleTokenSwap(event: TokenSwap): void {
     system.exchangeCount = system.exchangeCount.plus(BigInt.fromI32(1))
     system.save()
   }
+  swap.save()
 }

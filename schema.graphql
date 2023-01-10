@@ -31,6 +31,9 @@ type Swap @entity {
   # lp Token supply
   lpTokenSupply: BigInt!
 
+  # Total Volume
+  cumulativeVolume: BigDecimal!
+
   # amplification coefficient
   A: BigInt!
 

@@ -1,4 +1,4 @@
-import { Address, BigInt, ethereum } from "@graphprotocol/graph-ts"
+import { Address, BigDecimal, BigInt, ethereum } from "@graphprotocol/graph-ts"
 
 import { Swap } from "../../generated/schema"
 import { SwapFlashLoanNoWithdrawFee } from "../../generated/vUSD1Pool/SwapFlashLoanNoWithdrawFee"
@@ -48,6 +48,7 @@ export function getOrCreateSwapNoWithdrawFee(
 
     swap.owner = info.owner
     swap.lpTokenSupply = info.lpTokenSupply
+    swap.cumulativeVolume = BigDecimal.fromString("0.0")
 
     swap.save()
 
