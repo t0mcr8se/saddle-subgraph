@@ -6,10 +6,10 @@
     "lint:fix": "eslint src/ --fix && prettier --write src/**/*.ts",
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ voltfinance/stableswap-subgraph",
-    "create-local": "graph create --node http://localhost:8020/ voltfinance/stableswap-subgraph",
-    "remove-local": "graph remove --node http://localhost:8020/ voltfinance/stableswap-subgraph",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 voltfinance/stableswap-subgraph"
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ voltfinance/stableswap",
+    "create-local": "graph create --node http://localhost:8020/ voltfinance/stableswap",
+    "remove-local": "graph remove --node http://localhost:8020/ voltfinance/stableswap",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 voltfinance/stableswap"
   },
   "repository": {
     "type": "git",

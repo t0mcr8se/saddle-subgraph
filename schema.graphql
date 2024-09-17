@@ -31,6 +31,9 @@ type Swap @entity {
   # lp Token supply
   lpTokenSupply: BigInt!
 
+  # Total Volume
+  cumulativeVolume: BigDecimal!
+
   # amplification coefficient
   A: BigInt!
 
@@ -68,6 +71,8 @@ type DailyVolume implements TradeVolume @entity {
   swap: Swap!
   timestamp: BigInt!
   volume: BigDecimal!
+  lpTokenSupply: BigInt!
+  virtualPrice: BigInt!
 }
 
 type HourlyVolume implements TradeVolume @entity {
@@ -75,6 +80,8 @@ type HourlyVolume implements TradeVolume @entity {
   swap: Swap!
   timestamp: BigInt!
   volume: BigDecimal!
+  lpTokenSupply: BigInt!
+  virtualPrice: BigInt!
 }
 
 type WeeklyVolume implements TradeVolume @entity {
@@ -82,6 +89,8 @@ type WeeklyVolume implements TradeVolume @entity {
   swap: Swap!
   timestamp: BigInt!
   volume: BigDecimal!
+  lpTokenSupply: BigInt!
+  virtualPrice: BigInt!
 }
 
 interface SwapEvent @entity {
